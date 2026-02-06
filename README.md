@@ -15,9 +15,11 @@ The model is trained on the `Multi30k` dataset (English–German). This dataset 
 ### 1) BPE Tokenization
 - SentencePiece BPE tokenizer trained on the Multi30k training split.
 - Shared vocabulary for source and target languages.
-- Vocabulary size: 
+- Vocabulary size: 10,000
+- Character coverage: 1.0
+- Byte fallback: enabled
 
-### 2) Model Architecture CHANGER LES VALEURS
+### 2) Model Architecture
 A Seq2Seq Transformer (encoder–decoder) implemented with `torch.nn.Transformer`:
 - `d_model`: 512
 - `nhead`: 8
@@ -25,6 +27,8 @@ A Seq2Seq Transformer (encoder–decoder) implemented with `torch.nn.Transformer
 - Decoder layers: 4
 - Feedforward dimension: 2048
 - Dropout: 0.1
+- Weight initialization: Xavier uniform
+- Random seed: 0
 
 ### 3) Training
 - Optimizer: Adam (`lr=3e-4`, `betas=(0.9, 0.98)`, `eps=1e-9`)
